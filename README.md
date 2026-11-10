@@ -47,16 +47,13 @@ https://example.org/api/dl?path=%2Ftmp%2Fa.md&name=%E7%BB%BC%E8%BF%B0-2026-11-10
 
 ## 安装
 
-前提：DSH ≥ 0.2.0-rc.1（`connection.fetch` 与 `fs` 服务）；Node ≥ 20。插件**无构建脚本**，
-所以从 git 安装也不会被 pnpm 的 `allowBuilds` 拦住。
+前提：DSH ≥ 0.2.0-rc.1（`connection.fetch` 与 `fs` 服务）；Node ≥ 20；从 git 安装还要机器上有 `git`、能访问 github.com。
+插件**无构建脚本**，所以从 git 安装不会被 pnpm 的 `allowBuilds` 拦住。
 
-### A. 从 npm（尚未发布；发布后即可用这条）
+> 本包**不发 npm**（自用为主，GitHub 即唯一分发渠道）。拿不到 github.com 的机器可以把包打成 tgz 拷过去装：
+> `pnpm pack` → `dsh plugin --profile web add /path/to/dsh-file-download-0.1.0.tgz`。
 
-```bash
-dsh plugin --profile web add dsh-file-download
-```
-
-### B. 从 GitHub（不发布 npm 也能用）
+### 从 GitHub
 
 ```bash
 dsh plugin --profile web add github:liruizhe/dsh-file-download#v0.1.0   # 或 #main 跟随主干
@@ -70,7 +67,7 @@ dsh plugin --profile web add "git+ssh://git@your.git.host:<owner>/dsh-file-downl
 
 （实测：`pnpm add github:liruizhe/dsh-file-download#v0.1.0` 直接装好并可装载，无需 `allowBuilds`，因为本包没有构建脚本。）
 
-### C. 本地目录（自用 / 开发）
+### 本地目录（自用 / 开发）
 
 ```bash
 dsh plugin --profile web add file:/path/to/dsh-file-download          # 或 link: 保持就地编辑
@@ -116,7 +113,7 @@ systemctl restart dsh-web        # 或你启动 dsh 的方式
 ```bash
 git clone <repo> && cd dsh-file-download
 node --test test/          # 离线自检：假 ctx + 假 fs，无需跑 dsh
-npm run check              # 发布前体检（测试 + 清单完整性 + 占位符检查）
+node scripts/prepublish-check.mjs   # 发布前体检（测试 + 清单完整性 + 占位符检查）
 ```
 
 约定：运行时只用 `node:` 内置模块 + 注入的 `ctx`，**不 import 任何 `@deepseek-ai/*` 运行时值**

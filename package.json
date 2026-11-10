@@ -46,9 +46,6 @@
     "content-disposition",
     "filename"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "homepage": "https://github.com/liruizhe/dsh-file-download#readme",
   "bugs": {
     "url": "https://github.com/liruizhe/dsh-file-download/issues"

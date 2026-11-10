@@ -5,6 +5,8 @@
 （git 安装的包若有 `prepare` 构建脚本会被 pnpm 拦住，要人工在 profile 的 `pnpm-workspace.yaml`
 里加 `allowBuilds` —— 本包没有构建步骤，免这个坑）。
 
+> **当前决定（2026-11-10）：只走 GitHub，不发 npm**（自用为主）。下面第 2 节留作以后想发时的备忘。
+
 ## 0. 发布前必做（有一条硬门槛）
 
 ```bash

@@ -50,7 +50,7 @@ https://example.org/api/dl?path=%2Ftmp%2Fa.md&name=%E7%BB%BC%E8%BF%B0-2026-11-10
 前提：DSH ≥ 0.2.0-rc.1（`connection.fetch` 与 `fs` 服务）；Node ≥ 20。插件**无构建脚本**，
 所以从 git 安装也不会被 pnpm 的 `allowBuilds` 拦住。
 
-### A. 从 npm
+### A. 从 npm（尚未发布；发布后即可用这条）
 
 ```bash
 dsh plugin --profile web add dsh-file-download
@@ -59,7 +59,7 @@ dsh plugin --profile web add dsh-file-download
 ### B. 从 GitHub（不发布 npm 也能用）
 
 ```bash
-dsh plugin --profile web add github:<owner>/dsh-file-download      # 可加 #v0.1.0 / #main
+dsh plugin --profile web add github:liruizhe/dsh-file-download#v0.1.0   # 或 #main 跟随主干
 ```
 
 私有仓库（自建 Gitea 等）用完整 git URL：
@@ -67,6 +67,8 @@ dsh plugin --profile web add github:<owner>/dsh-file-download      # 可加 #v0.
 ```bash
 dsh plugin --profile web add "git+ssh://git@your.git.host:<owner>/dsh-file-download.git"
 ```
+
+（实测：`pnpm add github:liruizhe/dsh-file-download#v0.1.0` 直接装好并可装载，无需 `allowBuilds`，因为本包没有构建脚本。）
 
 ### C. 本地目录（自用 / 开发）
 

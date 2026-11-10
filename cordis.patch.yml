@@ -1,0 +1,13 @@
+# dsh-file-download bundle declaration：被列进 profile 的 dsh.profile.bundles 即挂载本路由，
+# 因此不需要在 profile 的 cordis.patch.yml 里再写 insert 条目。
+#
+# 想改配置请在 profile 补丁层写**裸 row** 按 id 覆盖（不要再写 - insert:，否则挂载两次）：
+#
+#     - id: dsh-file-download
+#       config:
+#         route: /api/dl
+#         maxBytes: 20971520
+#         mode: attachment        # 默认强制下载；inline = 只给文件名提示，浏览器可内联预览
+- insert:
+    - id: dsh-file-download
+      name: dsh-file-download

@@ -1,0 +1,60 @@
+{
+  "name": "dsh-file-download",
+  "version": "0.1.0",
+  "description": "DSH Host 插件：新增 /api/dl 下载路由，按真实文件名给出 Content-Disposition（中文/空格均正常），补掉内置 /api/file 下载全叫 file.xxx 的短板。",
+  "type": "module",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/prepublish-check.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-client-connection": ">=0.2.0-rc.1",
+    "@deepseek-ai/dsh-fs": ">=0.2.0-rc.1"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "cordis",
+    "download",
+    "content-disposition",
+    "filename"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/liruizhe/dsh-file-download#readme",
+  "bugs": {
+    "url": "https://github.com/liruizhe/dsh-file-download/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liruizhe/dsh-file-download.git"
+  }
+}
